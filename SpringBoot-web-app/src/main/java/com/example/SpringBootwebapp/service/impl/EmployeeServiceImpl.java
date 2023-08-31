@@ -1,5 +1,6 @@
 package com.example.SpringBootwebapp.service.impl;
 
+import com.example.SpringBootwebapp.exception.DataProcessingException;
 import com.example.SpringBootwebapp.model.Employee;
 import com.example.SpringBootwebapp.repository.EmployeeRepository;
 import com.example.SpringBootwebapp.service.EmployeeService;
@@ -30,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (optional.isPresent()) {
             employee = optional.get();
         } else {
-            throw new RuntimeException(" Employee not found for id :: " + id);
+            throw new DataProcessingException("Employee not found for id :: " + id);
         }
         return employee;
     }
